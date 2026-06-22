@@ -1,0 +1,162 @@
+Crea una tarjeta digital elegante para boda con la siguiente estructura:
+
+## HEADER (Top)
+- Nombre de los novios: Andrés Felipe Puerta & Ángela Maria Mosquera
+- Subtítulo: "Nos complace invitarte a nuestro enlace"
+- Imagen de fondo sutil y dinámico (Colores Boda.jpeg)
+
+## INFORMACIÓN PRINCIPAL
+- Fecha: [Sabádo, 29-08-2026]
+- Hora: [05:30PM]
+- Lugar: [Restaurante Tres Amores]
+- Dirección: [Via Tuluá-Tres Esquinas]
+- Link a Google Maps: [https://www.google.com/maps/place/3+Corazones+Caf%C3%A9+-+Bar+%26+Restaurante/@4.1071002,-76.2162971,16z/data=!4m15!1m8!3m7!1s0x8e39c5c6c761990d:0x4b91b4e5ee425e42!2sTulu%C3%A1,+Valle+del+Cauca!3b1!8m2!3d4.089869!4d-76.1914991!16zL20vMDQ2aHBz!3m5!1s0x8e39c584dea20453:0xd4c2c3e0bc700ab4!8m2!3d4.1072623!4d-76.2160625!16s%2Fg%2F11k1nt_l01?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D]
+
+## SECCIONES (con scroll suave)
+1. **Ceremonia** - Hora exacta y lugar
+2. **Recepción** - Hora, ubicación, detalles (cóctel, cena, etc.)
+3. **Dress Code** - Especificar si es formal, semiformal, etc.
+4. **Hospedaje** - Links a hoteles cercanos recomendados
+5. **Transporte** - Detalles de estacionamiento o transporte disponible
+6. **Regalos** - Link a registro de regalos (si aplica)
+
+---
+
+## FORMULARIO RSVP (SECCIÓN DESTACADA)
+
+### TÍTULO Y DESCRIPCIÓN
+- Título: "Confirma tu asistencia"
+- Descripción: "Por favor, completa este formulario antes del [FECHA LÍMITE]"
+
+### CAMPOS DEL FORMULARIO
+
+#### CAMPO 1: Nombre Completo
+- Tipo: Texto
+- Placeholder: "Escribe tu nombre completo"
+- Requerido: Sí
+- Validación: Mínimo 3 caracteres
+
+#### CAMPO 2: Correo Electrónico
+- Tipo: Email
+- Placeholder: "tu.email@ejemplo.com"
+- Requerido: Sí
+- Validación: Formato de email válido
+- Nota: "Usaremos esto para confirmación"
+
+#### CAMPO 3: Número de Teléfono (Opcional)
+- Tipo: Teléfono
+- Placeholder: "+57 (123) 456-7890"
+- Requerido: No
+- Formato: Colombiano preferentemente
+
+#### CAMPO 4: ¿Confirmas tu asistencia?
+- Tipo: Radio Buttons o Dropdown
+- Opciones:
+  - ✅ Sí, asisto con gusto
+  - ❌ No puedo asistir
+  - ❓ Aún no lo sé
+- Requerido: Sí
+- Estilo: Botones visuales con colores (verde, rojo, gris)
+
+#### CAMPO 5: Número de Acompañantes
+- Tipo: Dropdown / Select
+- Opciones: 0, 1, 2, 3, 4
+- Requerido: Sí (si asiste)
+- Placeholder: "Selecciona cantidad"
+- Nota: "Incluye a ti mismo en el conteo"
+
+#### CAMPO 6: Nombre(s) de Acompañante(s) - CONDICIONAL
+- Tipo: Textarea o campos dinámicos
+- Aparece si: Número de acompañantes > 0
+- Placeholder: "Nombre completo del acompañante"
+- Requerido: Sí (si hay acompañantes)
+- Validación: Un nombre por línea
+
+#### CAMPO 7: Restricciones Dietéticas
+- Tipo: Checkboxes múltiples
+- Opciones:
+  - □ Vegetariano
+  - □ Vegano
+  - □ Sin gluten
+  - □ Sin mariscos
+  - □ Sin lácteos
+  - □ Otro (especificar)
+- Requerido: No
+- Nota: "Ayúdanos a preparar el menú perfecto"
+
+#### CAMPO 8: Especificar Otra Restricción Dietética - CONDICIONAL
+- Tipo: Textarea
+- Aparece si: "Otro" está seleccionado
+- Placeholder: "Cuéntanos sobre tu restricción"
+- Límite: 200 caracteres
+
+#### CAMPO 9: ¿Cómo nos conocemos?
+- Tipo: Dropdown
+- Opciones:
+  - Familia de [Nombre novio]
+  - Familia de [Nombre novia]
+  - Amigo/a de [Nombre novio]
+  - Amigo/a de [Nombre novia]
+  - Trabajo
+  - Otro
+- Requerido: No
+
+#### CAMPO 10: Mensaje Especial (Opcional)
+- Tipo: Textarea
+- Placeholder: "¿Un mensaje, recomendación o deseo para los novios?"
+- Límite: 500 caracteres
+- Requerido: No
+
+#### CAMPO 11: Nivel de Confirmación
+- Tipo: Radio Buttons
+- Opciones:
+  - Confirmado (100% iré)
+  - Probable (muy probablemente iré)
+  - Pendiente (confirmaré después)
+- Requerido: Sí
+- Nota: "Esto nos ayuda con la planificación"
+
+---
+
+### VALIDACIONES Y REGLAS
+
+**Uso de Tipografia:**
+- "Usar la tipografia de la carpeta Tipografia"
+
+**Al enviar el formulario:**
+- ✅ Todos los campos requeridos deben estar completos
+- ✅ Email debe ser válido
+- ✅ Si selecciona "Sí, asisto", debe especificar acompañantes
+- ✅ Si hay acompañantes, debe ingresar sus nombres
+- ✅ Mostrar mensaje de error si falta información
+- ✅ Mensaje de éxito al completar
+
+**Mensajes de error:**
+- "Este campo es obligatorio"
+- "Por favor, ingresa un email válido"
+- "Debes especificar los nombres de tus acompañantes"
+- "Este campo no puede estar vacío"
+
+**Mensajes de éxito:**
+- "¡Gracias por confirmar tu asistencia! Hemos enviado una confirmación a tu email."
+- "Recibimos tu respuesta. Te esperamos en nuestra boda 💕"
+
+---
+
+### ALMACENAMIENTO Y ENVÍO DE DATOS
+
+#### OPCIÓN 1: Google Forms (Recomendado para simplicidad)
+- Crear Google Form privado
+- Insertar iframe en la tarjeta
+- Respuestas se guardan automáticamente en Google Sheets
+- Puedes ver todas las confirmaciones en tiempo real
+
+#### OPCIÓN 3: Google Sheets API + Apps Script
+- Guardar datos directamente en Google Sheets
+- Más control y profesional
+- Requiere configuración técnica
+---
+
+### CONFIRMACIÓN POST-ENVÍO
+
+**Email automático que recibe el invitado:**

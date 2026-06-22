@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Invitación virtual a la boda de Andrés Felipe Puerta & Ángela María Mosquera — 29 de agosto de 2026, Restaurante Tres Amores, Tuluá." />
+  <title>Andrés y Ángela · Nuestra Boda · 29.08.2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles-v2.css" />
+</head>
+<body>
+  <!-- ============= NAV ============= -->
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="#inicio" class="navbar__brand">A &amp; Á</a>
+    <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar__menu" id="navMenu">
+      <li><a href="#detalles">Detalles</a></li>
+      <li><a href="#ceremonia">Ceremonia</a></li>
+      <li><a href="#recepcion">Recepción</a></li>
+      <li><a href="#dresscode">Dress Code</a></li>
+      <li><a href="#hospedaje">Hospedaje</a></li>
+      <li><a href="#regalos">Regalos</a></li>
+      <li><a href="#rsvp" class="navbar__cta">Confirmar</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============= HERO ============= -->
+  <header class="hero" id="inicio">
+    <!-- Fondo con Ken Burns -->
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <!-- Pétalos animados -->
+    <div class="petals" aria-hidden="true">
+      <span class="petal petal--1">&#10070;</span>
+      <span class="petal petal--2">&#10070;</span>
+      <span class="petal petal--3">&#10070;</span>
+      <span class="petal petal--4">&#10070;</span>
+      <span class="petal petal--5">&#10070;</span>
+      <span class="petal petal--6">&#10070;</span>
+      <span class="petal petal--7">&#10070;</span>
+      <span class="petal petal--8">&#10070;</span>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__frame">
+        <h1 class="hero__names">
+          <span>Andrés y</span>
+          <span>Ángela</span>
+        </h1>
+
+        <p class="hero__tagline">Nuestra Boda</p>
+        <p class="hero__subtitle">Nos complace invitarte a nuestro enlace</p>
+
+        <!-- Cartouche con fecha (estilo tarjeta física) -->
+        <div class="cartouche" aria-label="Fecha de la boda">
+          <span class="cartouche__day">SÁBADO</span>
+          <span class="cartouche__num">29</span>
+          <span class="cartouche__month">AGOSTO · 5:30 PM</span>
+        </div>
+
+        <!-- Cuenta regresiva -->
+        <div class="countdown" id="countdown" aria-label="Cuenta regresiva">
+          <div class="countdown__item"><strong id="cd-days">--</strong><span>Días</span></div>
+          <div class="countdown__item"><strong id="cd-hours">--</strong><span>Horas</span></div>
+          <div class="countdown__item"><strong id="cd-mins">--</strong><span>Minutos</span></div>
+          <div class="countdown__item"><strong id="cd-secs">--</strong><span>Segundos</span></div>
+        </div>
+      </div>
+
+      <a href="#detalles" class="hero__scroll" aria-label="Bajar a detalles">
+        <span></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============= INFORMACIÓN PRINCIPAL ============= -->
+  <section class="section section--intro" id="detalles">
+    <div class="container">
+      <p class="ornament">&#10070;</p>
+      <h2 class="section__title">Detalles del evento</h2>
+      <p class="section__subtitle script">Nos casamos. Y queremos celebrarlo contigo</p>
+      <p class="section__lead">
+        Después de compartir tantos momentos a tu lado, queremos que estés presente
+        en este día tan especial. Aquí encontrarás toda la información que necesitas.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card__icon" aria-hidden="true">&#128197;</div>
+          <h3>Fecha</h3>
+          <p>Sábado<br/><strong>29 de agosto de 2026</strong></p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__icon" aria-hidden="true">&#128344;</div>
+          <h3>Hora</h3>
+          <p><strong>6:00 PM</strong><br/>Recibimiento desde las 5:30 PM</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__icon" aria-hidden="true">&#127968;</div>
+          <h3>Lugar</h3>
+          <p><strong>Restaurante Tres Amores</strong><br/>Vía Tres Esquinas</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__icon" aria-hidden="true">&#128205;</div>
+          <h3>Ubicación</h3>
+          <p>
+            <a
+              href="https://www.google.com/maps/place/3+Corazones+Caf%C3%A9+-+Bar+%26+Restaurante/@4.1071002,-76.2162971,16z/data=!4m15!1m8!3m7!1s0x8e39c5c6c761990d:0x4b91b4e5ee425e42!2sTulu%C3%A1,+Valle+del+Cauca!3b1!8m2!3d4.089869!4d-76.1914991!16zL20vMDQ2aHBz!3m5!1s0x8e39c584dea20453:0xd4c2c3e0bc700ab4!8m2!3d4.1072623!4d-76.2160625!16s%2Fg%2F11k1nt_l01"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--ghost"
+            >Ver en Google Maps</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CEREMONIA ============= -->
+  <section class="section section--alt" id="ceremonia">
+    <div class="container two-col">
+      <div class="two-col__media">
+        <figure class="round-image">
+          <img src="assets/ceremonia.jpeg" alt="Arco floral de ceremonia con hortensias azules y eucalipto" loading="lazy" />
+          <figcaption class="round-image__badge"><span class="script">5:30 PM</span></figcaption>
+        </figure>
+      </div>
+      <div class="two-col__content">
+        <p class="ornament ornament--left">&#10070;</p>
+        <h2 class="section__title section__title--left">Ceremonia</h2>
+        <p>
+          La ceremonia dará inicio puntualmente a las <strong>5:30 PM</strong>
+          en <strong>Restaurante Tres Amores</strong>, ubicado en la Vía Tuluá – Tres Esquinas.
+        </p>
+        <p>
+          Te pedimos llegar 30 minutos antes para acompañarnos a recibir
+          a los invitados y disfrutar de un brindis de bienvenida.
+        </p>
+        <a
+          href="https://www.google.com/maps/place/3+Corazones+Caf%C3%A9+-+Bar+%26+Restaurante/@4.1071002,-76.2162971,16z"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--primary"
+        >Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= RECEPCIÓN ============= -->
+  <section class="section" id="recepcion">
+    <div class="container two-col two-col--reverse">
+      <div class="two-col__media">
+        <figure class="round-image">
+          <img src="assets/recepcion.jpeg" alt="Mesa elegante de recepción con copas de champaña y flores azules" loading="lazy" />
+          <figcaption class="round-image__badge round-image__badge--sage"><span class="script">Cena · Brindis</span></figcaption>
+        </figure>
+      </div>
+      <div class="two-col__content">
+        <p class="ornament ornament--left">&#10070;</p>
+        <h2 class="section__title section__title--left">Recepción</h2>
+        <p>
+          Inmediatamente después de la ceremonia te esperamos en el mismo lugar
+          para compartir un <strong>cóctel de bienvenida</strong>, seguido de
+          <strong>cena</strong>, brindis y mucha música.
+        </p>
+        <ul class="timeline">
+          <li><strong>6:00 PM</strong> · Cóctel y fotografías</li>
+          <li><strong>7:30 PM</strong> · Cena de gala</li>
+          <li><strong>9:00 PM</strong> · Brindis y baile de los novios</li>
+          <li><strong>9:30 PM</strong> · Fiesta hasta el amanecer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= DRESS CODE / PALETA ============= -->
+  <section class="section section--alt" id="dresscode">
+    <div class="container">
+      <p class="ornament">&#10070;</p>
+      <h2 class="section__title">Código de vestimenta</h2>
+      <p class="section__subtitle script">Nuestra paleta</p>
+      <p class="section__lead">
+        Esta paleta está <strong>reservada exclusivamente para el novio y
+        las damas de honor</strong>. Para que luzcamos increíbles en las fotos,
+        te pedimos amablemente <strong>no usar estos tonos</strong> en tu
+        vestimenta. ¡Gracias por respetarlo!
+      </p>
+
+      <!-- Paleta destacada estilo tarjeta física -->
+      <div class="palette-cards">
+        <div class="palette-card palette-card--blue">
+          <span class="script">Dusty</span>
+          <span class="script">Blue</span>
+        </div>
+        <div class="palette-card palette-card--sage">
+          <span class="script">Sage</span>
+          <span class="script">Green</span>
+        </div>
+        <div class="palette-card palette-card--gray">
+          <span class="script">Gray</span>
+        </div>
+      </div>
+
+      <div class="dresscode-grid">
+        <div class="dresscode-card">
+          <h3>Caballeros</h3>
+          <p>Traje completo en tonos oscuros (azul noche, vino, café o negro). Corbata o corbatín. <em>Evita el dusty blue, sage green y gris claro</em>.</p>
+        </div>
+        <div class="dresscode-card">
+          <h3>Damas</h3>
+          <p>Vestido largo o midi en tonos pasteles, tierra o joya. <em>Evita el blanco y los colores de nuestra paleta</em>.</p>
+        </div>
+        <div class="dresscode-card">
+          <h3>Estilo</h3>
+          <p><strong>Formal / Etiqueta</strong>. Queremos que luzcas espectacular en nuestro día.</p>
+        </div>
+      </div>
+
+      <p class="dresscode-note">
+        <strong>Importante:</strong> los colores <span style="color:var(--dusty-blue-dark)">Dusty Blue</span>,
+        <span style="color:var(--sage-dark)">Sage Green</span> y
+        <span style="color:var(--gray)">Gray</span> son exclusivos del
+        <strong>novio y las damas de honor</strong>. ¡Gracias por ayudarnos a destacar el cortejo!
+      </p>
+    </div>
+  </section>
+
+  <!-- ============= HOSPEDAJE ============= -->
+  <section class="section" id="hospedaje">
+    <div class="container">
+      <p class="ornament">&#10070;</p>
+      <h2 class="section__title">Hospedaje</h2>
+      <p class="section__lead">
+        Si vienes desde fuera de Tuluá, estas son algunas opciones recomendadas
+        cercanas al evento.
+      </p>
+
+      <figure class="round-image round-image--small">
+        <img src="assets/hospedaje.jpeg" alt="Maleta vintage con flores azules y llave de hotel" loading="lazy" />
+      </figure>
+
+      <div class="hotels-grid">
+        <article class="hotel-card">
+          <h3>Hotel Estelar Tuluá</h3>
+          <p>A 10 minutos del evento · Confort 4★</p>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/Hotel+Estelar+Tulu%C3%A1" target="_blank" rel="noopener">Ver hotel</a>
+        </article>
+        <article class="hotel-card">
+          <h3>Hotel Plaza 51</h3>
+          <p>Centro de Tuluá · 15 min</p>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/Hotel+Plaza+51+Tulu%C3%A1" target="_blank" rel="noopener">Ver hotel</a>
+        </article>
+        <article class="hotel-card">
+          <h3>Hotel Alferez Real</h3>
+          <p>Tuluá · 20 min</p>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/Hotel+Alferez+Real+Tulu%C3%A1" target="_blank" rel="noopener">Ver hotel</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= TRANSPORTE ============= -->
+  <section class="section section--alt" id="transporte">
+    <div class="container two-col">
+      <div class="two-col__media">
+        <figure class="round-image">
+          <img src="assets/transporte.jpeg" alt="Auto vintage de novios decorado con flores y latas" loading="lazy" />
+        </figure>
+      </div>
+      <div class="two-col__content">
+        <p class="ornament ornament--left">&#10070;</p>
+        <h2 class="section__title section__title--left">Transporte y parqueo</h2>
+        <div class="transport-list">
+          <div class="transport-list__item">
+            <div class="info-card__icon" aria-hidden="true">&#128663;</div>
+            <div>
+              <h3>Parqueadero</h3>
+              <p>El restaurante cuenta con parqueadero gratuito para los invitados. Llega con tiempo, los cupos son limitados.</p>
+            </div>
+          </div>
+          <div class="transport-list__item">
+            <div class="info-card__icon" aria-hidden="true">&#128652;</div>
+            <div>
+              <h3>Transporte sugerido</h3>
+              <p>Recomendamos servicios como Uber, DiDi o taxi por la vía Tuluá–Tres Esquinas. Si vienes en grupo, podemos coordinar un bus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= REGALOS / LLUVIA DE SOBRES ============= -->
+  <section class="section" id="regalos">
+    <div class="container narrow">
+      <p class="ornament">&#10070;</p>
+      <h2 class="section__title">Regalos</h2>
+      <p class="section__subtitle script">Lluvia de Sobres</p>
+      <p class="section__lead">
+        Tu presencia es nuestro mejor regalo. Si además quieres consentirnos,
+        hemos preparado una lluvia de sobres y un registro de regalos.
+      </p>
+
+      <figure class="round-image round-image--small">
+        <img src="assets/regalos.jpeg" alt="Sobres elegantes atados con cinta dorada y flores" loading="lazy" />
+      </figure>
+
+      <div class="gifts">
+        <div class="gift-card">
+          <div class="gift-card__icon" aria-hidden="true">&#128238;</div>
+          <h3>Lluvia de sobres</h3>
+          <p>Cuenta de ahorros<br/><strong>Bancolombia · 1234 5678 901</strong></p>
+        </div>
+        <div class="gift-card">
+          <div class="gift-card__icon" aria-hidden="true">&#127873;</div>
+          <h3>Registro de regalos</h3>
+          <a class="btn btn--primary" href="#" target="_blank" rel="noopener">Ver lista (próximamente)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= RSVP ============= -->
+  <section class="section section--rsvp" id="rsvp">
+    <div class="container narrow">
+      <p class="ornament">&#10070;</p>
+      <h2 class="section__title">Confirma tu asistencia</h2>
+      <p class="section__subtitle script">Te esperamos</p>
+      <p class="section__lead">
+        Por favor, completa este formulario antes del
+        <strong>15 de agosto de 2026</strong>.
+      </p>
+
+      <form id="rsvpForm" class="rsvp-form" novalidate>
+        <!-- CAMPO 1: Nombre -->
+        <div class="form-row">
+          <label for="fullName">Nombre completo <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="Escribe tu nombre completo" minlength="3" required autocomplete="name" />
+          <small class="error-msg" data-for="fullName"></small>
+        </div>
+
+        <!-- CAMPO 2: Email -->
+        <div class="form-row">
+          <label for="email">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" required autocomplete="email" />
+          <small class="help-msg">Usaremos esto para confirmación.</small>
+          <small class="error-msg" data-for="email"></small>
+        </div>
+
+        <!-- CAMPO 3: Teléfono -->
+        <div class="form-row">
+          <label for="phone">Número de teléfono <span class="opt">(Opcional)</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+57 (123) 456-7890" autocomplete="tel" />
+          <small class="error-msg" data-for="phone"></small>
+        </div>
+
+        <!-- CAMPO 4: Confirmación -->
+        <div class="form-row">
+          <label>¿Confirmas tu asistencia? <span class="req">*</span></label>
+          <div class="choice-grid" role="radiogroup" aria-label="Asistencia">
+            <label class="choice choice--yes">
+              <input type="radio" name="attendance" value="yes" required />
+              <span class="choice__icon">&#10004;</span>
+              <span>Sí, asisto con gusto</span>
+            </label>
+            <label class="choice choice--no">
+              <input type="radio" name="attendance" value="no" />
+              <span class="choice__icon">&#10006;</span>
+              <span>No puedo asistir</span>
+            </label>
+            <label class="choice choice--maybe">
+              <input type="radio" name="attendance" value="maybe" />
+              <span class="choice__icon">?</span>
+              <span>Aún no lo sé</span>
+            </label>
+          </div>
+          <small class="error-msg" data-for="attendance"></small>
+        </div>
+
+        <!-- Condicionales si asiste -->
+        <div id="attendingFields" class="conditional" hidden>
+          <!-- CAMPO 5: Acompañantes -->
+          <div class="form-row">
+            <label for="companions">Número de acompañantes <span class="req">*</span></label>
+            <select id="companions" name="companions">
+              <option value="">Selecciona cantidad</option>
+              <option value="0">0 (solo yo)</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <small class="help-msg">No te incluyas en el conteo; solo cuenta a tus acompañantes.</small>
+            <small class="error-msg" data-for="companions"></small>
+          </div>
+
+          <!-- CAMPO 6: Nombres acompañantes -->
+          <div class="form-row conditional" id="companionsNamesRow" hidden>
+            <label for="companionsNames">Nombre(s) de acompañante(s) <span class="req">*</span></label>
+            <textarea id="companionsNames" name="companionsNames" rows="3" placeholder="Nombre completo del acompañante (uno por línea)"></textarea>
+            <small class="help-msg">Un nombre por línea.</small>
+            <small class="error-msg" data-for="companionsNames"></small>
+          </div>
+        </div>
+
+        <!-- CAMPO 7: Restricciones -->
+        <div class="form-row">
+          <label>Restricciones dietéticas <span class="opt">(Opcional)</span></label>
+          <div class="checkbox-grid">
+            <label class="check"><input type="checkbox" name="diet" value="vegetariano" /><span>Vegetariano</span></label>
+            <label class="check"><input type="checkbox" name="diet" value="vegano" /><span>Vegano</span></label>
+            <label class="check"><input type="checkbox" name="diet" value="sin_gluten" /><span>Sin gluten</span></label>
+            <label class="check"><input type="checkbox" name="diet" value="sin_mariscos" /><span>Sin mariscos</span></label>
+            <label class="check"><input type="checkbox" name="diet" value="sin_lacteos" /><span>Sin lácteos</span></label>
+            <label class="check"><input type="checkbox" name="diet" value="otro" id="dietOther" /><span>Otro</span></label>
+          </div>
+          <small class="help-msg">Ayúdanos a preparar el menú perfecto.</small>
+        </div>
+
+        <!-- CAMPO 8: Otra restricción -->
+        <div class="form-row conditional" id="dietOtherRow" hidden>
+          <label for="dietOtherText">Especifica tu restricción</label>
+          <textarea id="dietOtherText" name="dietOtherText" rows="2" maxlength="200" placeholder="Cuéntanos sobre tu restricción"></textarea>
+          <small class="help-msg"><span id="dietOtherCount">0</span> / 200</small>
+        </div>
+
+        <!-- CAMPO 9: Cómo nos conocemos -->
+        <div class="form-row">
+          <label for="relation">¿Cómo nos conocemos? <span class="opt">(Opcional)</span></label>
+          <select id="relation" name="relation">
+            <option value="">Selecciona una opción</option>
+            <option value="familia_novio">Familia de Andrés</option>
+            <option value="familia_novia">Familia de Ángela</option>
+            <option value="amigo_novio">Amigo/a de Andrés</option>
+            <option value="amiga_novia">Amigo/a de Ángela</option>
+            <option value="trabajo">Trabajo</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <!-- CAMPO 10: Mensaje -->
+        <div class="form-row">
+          <label for="message">Mensaje especial <span class="opt">(Opcional)</span></label>
+          <textarea id="message" name="message" rows="4" maxlength="500" placeholder="¿Un mensaje, recomendación o deseo para los novios?"></textarea>
+          <small class="help-msg"><span id="msgCount">0</span> / 500</small>
+        </div>
+
+        <!-- CAMPO 11: Nivel de confirmación -->
+        <div class="form-row">
+          <label>Nivel de confirmación <span class="req">*</span></label>
+          <div class="radio-list" role="radiogroup">
+            <label class="check"><input type="radio" name="confirmation" value="confirmado" required /><span>Confirmado (100% iré)</span></label>
+            <label class="check"><input type="radio" name="confirmation" value="probable" /><span>Probable (muy probablemente iré)</span></label>
+            <label class="check"><input type="radio" name="confirmation" value="pendiente" /><span>Pendiente (confirmaré después)</span></label>
+          </div>
+          <small class="help-msg">Esto nos ayuda con la planificación.</small>
+          <small class="error-msg" data-for="confirmation"></small>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block" id="submitBtn">Enviar confirmación</button>
+
+        <p class="form-footnote">Tus datos se guardan de forma privada y solo serán usados para la organización de la boda.</p>
+      </form>
+
+      <!-- Modal de éxito -->
+      <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+        <div class="modal__backdrop"></div>
+        <div class="modal__card">
+          <div class="modal__icon">&#128150;</div>
+          <h3 id="successTitle">¡Gracias por confirmar tu asistencia!</h3>
+          <p id="successText">Recibimos tu respuesta. Te esperamos en nuestra boda.</p>
+          <button class="btn btn--primary" id="closeModal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FOOTER ============= -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__names">Andrés y Ángela</p>
+      <p class="footer__date">29 · 08 · 2026 · Tuluá, Valle del Cauca</p>
+      <p class="footer__signature">Hecho con cariño para ti</p>
+    </div>
+  </footer>
+
+  <button id="adminBtn" class="admin-btn" hidden>Ver respuestas</button>
+
+  <script src="script-v2.js"></script>
+</body>
+</html>
