@@ -1,5 +1,5 @@
 /* ===========================================================
-   Tarjeta de invitación v2 — script-v2.js
+   Tarjeta de invitación — script.js
    - Navbar fija con efecto al hacer scroll
    - Parallax sutil en el fondo del hero
    - Pétalos animados (controlados por CSS)
