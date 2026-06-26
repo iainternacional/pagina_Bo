@@ -44,14 +44,15 @@
     navToggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // ============== Parallax sutil en el hero ==============
+  // ============== Parallax sutil en el hero (sin interferir con Ken Burns) ==============
   const heroBg = $('.hero__bg');
   let ticking = false;
   function onParallax() {
     if (!heroBg) return;
     const y = window.scrollY;
     if (y > window.innerHeight) return;
-    heroBg.style.transform = `translateY(${y * 0.18}px) scale(1.08)`;
+    const offset = y * 0.12;
+    heroBg.style.backgroundPosition = `center calc(50% + ${offset}px)`;
   }
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -60,7 +61,7 @@
     }
   }, { passive: true });
 
-  // ============== Cuenta regresiva ==============
+  // ============== Cuenta regresiva premium ==============
   const cd = {
     d: $('#cd-days'),
     h: $('#cd-hours'),
@@ -69,18 +70,29 @@
   };
   const pad = (n) => String(Math.max(0, n)).padStart(2, '0');
 
+  function setCountdownValue(el, value) {
+    if (!el || el.textContent === value) return;
+    el.classList.add('is-updating');
+    setTimeout(() => {
+      el.textContent = value;
+      el.classList.remove('is-updating');
+    }, 200);
+  }
+
   function tickCountdown() {
     const now  = new Date();
     const diff = WEDDING_DATE - now;
     if (diff <= 0) {
-      cd.d.textContent = '00'; cd.h.textContent = '00';
-      cd.m.textContent = '00'; cd.s.textContent = '00';
+      setCountdownValue(cd.d, '00');
+      setCountdownValue(cd.h, '00');
+      setCountdownValue(cd.m, '00');
+      setCountdownValue(cd.s, '00');
       return;
     }
-    cd.d.textContent = pad(Math.floor(diff / 86400000));
-    cd.h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
-    cd.m.textContent = pad(Math.floor((diff % 3600000) / 60000));
-    cd.s.textContent = pad(Math.floor((diff % 60000) / 1000));
+    setCountdownValue(cd.d, pad(Math.floor(diff / 86400000)));
+    setCountdownValue(cd.h, pad(Math.floor((diff % 86400000) / 3600000)));
+    setCountdownValue(cd.m, pad(Math.floor((diff % 3600000) / 60000)));
+    setCountdownValue(cd.s, pad(Math.floor((diff % 60000) / 1000)));
   }
   tickCountdown();
   setInterval(tickCountdown, 1000);
@@ -330,21 +342,45 @@
     URL.revokeObjectURL(url);
   }
 
-  // ============== Reveal on scroll ==============
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
+  // ============== Reproductor de música ==============
+  const musicPlayer = $('#musicPlayer');
+  const bgMusic     = $('#bgMusic');
+  const MUSIC_KEY   = 'wedding_music_playing';
+
+  function updateMusicUI(playing) {
+    musicPlayer?.classList.toggle('is-playing', playing);
+    musicPlayer?.setAttribute('aria-pressed', String(playing));
+    musicPlayer?.setAttribute('aria-label', playing ? 'Pausar música de fondo' : 'Reproducir música de fondo');
+  }
+
+  musicPlayer?.addEventListener('click', async () => {
+    if (!bgMusic) return;
+    try {
+      if (bgMusic.paused) {
+        await bgMusic.play();
+        sessionStorage.setItem(MUSIC_KEY, '1');
+        updateMusicUI(true);
+      } else {
+        bgMusic.pause();
+        sessionStorage.removeItem(MUSIC_KEY);
+        updateMusicUI(false);
+      }
+    } catch {
+      musicPlayer.setAttribute('title', 'Agrega assets/musica.mp3 para habilitar la música');
+    }
+  });
+
+  bgMusic?.addEventListener('ended', () => updateMusicUI(false));
+
+  // ============== Scroll reveal (IntersectionObserver) ==============
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
       if (en.isIntersecting) {
-        en.target.style.opacity = '1';
-        en.target.style.transform = 'translateY(0)';
-        io.unobserve(en.target);
+        en.target.classList.add('is-visible');
+        revealObserver.unobserve(en.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  $$('.section').forEach(sec => {
-    sec.style.opacity = '0';
-    sec.style.transform = 'translateY(24px)';
-    sec.style.transition = 'opacity .8s ease, transform .8s ease';
-    io.observe(sec);
-  });
+  $$('[data-reveal]').forEach((el) => revealObserver.observe(el));
 })();

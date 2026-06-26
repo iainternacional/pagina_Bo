@@ -1,0 +1,295 @@
+# Instrucciones de Rediseño - Invitación de Boda Andrés & Ángela
+
+Actúa como un diseñador UX/UI senior especializado en invitaciones digitales de boda de alta gama (Fine Art Wedding Design) y como desarrollador Frontend experto en HTML, CSS, JavaScript y Angular.
+
+Tu objetivo es transformar la invitación actual en una experiencia premium, elegante, romántica y moderna, inspirada en bodas de estilo Fine Art, utilizando una paleta Dusty Blue, Sage Green y tonos neutros.
+
+## 1. Tipografía y Estética Fine Art
+
+### Tipografías
+
+Implementa las siguientes fuentes desde Google Fonts:
+
+**Títulos (H1, H2, H3):**
+
+* Cormorant Garamond
+* Alternativa: Playfair Display
+
+**Textos y contenido:**
+
+* Montserrat
+* Alternativa: Inter
+
+### Reglas de diseño
+
+* Los nombres "Andrés & Ángela" deben ser el elemento visual principal.
+* Aplicar espaciado amplio entre letras.
+* Utilizar jerarquías tipográficas elegantes.
+* Evitar tipografías genéricas.
+
+### Elementos decorativos
+
+Reemplazar todos los caracteres decorativos tipo:
+
+❖
+
+Por alguno de los siguientes elementos:
+
+* SVG minimalista de eucalipto
+* Líneas ornamentales finas
+* Monograma elegante con las iniciales "A & Á"
+
+Los SVG deben mantener una estética minimalista y sofisticada.
+
+---
+
+## 2. Animaciones Elegantes y Sutiles
+
+La experiencia debe sentirse viva sin ser exagerada.
+
+### Scroll Reveal
+
+Implementar animaciones usando:
+
+* AOS (Animate On Scroll)
+  o
+* IntersectionObserver nativo
+
+Aplicar:
+
+* Fade In Up
+* Duración: 700ms – 1000ms
+* Easing suave
+
+A los siguientes elementos:
+
+* Fotos de ceremonia
+* Fotos de recepción
+* Timeline
+* Dress Code
+* Confirmación de asistencia
+* Galería
+
+### Header Hero
+
+Agregar:
+
+* Efecto Parallax suave
+* Velocidad de desplazamiento menor que el scroll principal
+* Imagen de fondo elegante
+
+Opcional:
+
+* Máscara decorativa en forma de arco
+* Marco orgánico inspirado en papelería de boda
+
+---
+
+## 3. Paleta de Colores Aplicada a Toda la Interfaz
+
+No limitar la paleta al apartado Dress Code.
+
+### Variables CSS
+
+:root {
+--dusty-blue: #8DA9C4;
+--sage-green: #A8BBA3;
+--warm-gray: #D8D2C9;
+--ivory: #F8F6F2;
+--soft-background: #F4F7F6;
+--text-primary: #4A4A4A;
+}
+
+### Fondo General
+
+Cambiar el blanco puro por:
+
+#F4F7F6
+
+o
+
+#F0F4F8
+
+Agregar textura ligera tipo papel fino.
+
+### Tarjetas
+
+* Fondo blanco suave
+* Bordes ultra finos
+* Border radius elegante
+* Sombras sutiles
+
+Ejemplo:
+
+box-shadow: 0 10px 30px rgba(0,0,0,.05);
+
+### Muestras de Color Dress Code
+
+Mostrar cada color como:
+
+* Círculos perfectos
+* Border-radius: 50%
+* Sombras suaves
+* Apariencia similar a muestras de tela o pintura
+
+---
+
+## 4. Cuenta Regresiva Premium
+
+Rediseñar completamente el contador.
+
+### Requisitos
+
+* Números grandes y elegantes
+* Peso visual fuerte
+* Excelente visualización móvil
+
+Ejemplo:
+
+Días
+Horas
+Minutos
+Segundos
+
+### Animaciones
+
+Al cargar:
+
+* Fade In
+* Escalado suave
+
+Al actualizar valores:
+
+* Transición fluida
+* Cambio progresivo del número
+* Evitar cambios bruscos
+
+---
+
+## 5. Tarjetas Interactivas para los Detalles
+
+Agrupar la información en tarjetas individuales.
+
+### Información
+
+* Fecha
+* Hora
+* Lugar
+* Dirección
+* Ceremonia
+* Recepción
+
+### Comportamiento
+
+Hover Desktop:
+
+transform: translateY(-4px);
+
+Agregar:
+
+* Sombra más profunda
+* Cambio sutil de color
+* Animación de 300ms
+
+Mobile:
+
+* Feedback táctil suave
+* Escala ligera
+
+---
+
+## 6. Experiencia Visual de Mapas
+
+Cada ubicación debe mostrarse como una tarjeta premium.
+
+Incluir:
+
+* Miniatura del lugar
+* Nombre destacado
+* Dirección
+* Botón elegante "Cómo llegar"
+
+Animaciones:
+
+* Fade In
+* Hover elegante
+
+---
+
+## 7. Música de Fondo Emotiva
+
+Agregar un reproductor flotante discreto.
+
+### Requisitos
+
+Posición:
+
+* Inferior derecha
+
+Diseño:
+
+* Circular
+* Elegante
+* Minimalista
+
+Texto:
+
+♫ Escuchar música
+
+### Comportamiento
+
+* Iniciar pausado
+* Cumplir políticas del navegador
+* Mantener estado mientras se navega
+
+### Animaciones
+
+* Aparición suave
+* Rotación lenta opcional del icono al reproducir
+
+---
+
+## 8. Diseño Responsive Premium
+
+Optimizar para:
+
+* iPhone
+* Android
+* Tablets
+* Desktop
+
+### Requisitos
+
+* Mobile First
+* Sin scroll horizontal
+* Imágenes adaptativas
+* Tipografía escalable
+
+---
+
+## 9. Sensación General
+
+La invitación debe transmitir:
+
+* Elegancia
+* Romance
+* Exclusividad
+* Sofisticación
+* Diseño editorial
+* Estética Fine Art Wedding
+
+Inspirarse visualmente en:
+
+* Invitaciones de lujo
+* Revistas de bodas premium
+* Papelería artesanal de alta gama
+* Tendencias editoriales modernas
+
+Evitar:
+
+* Colores saturados
+* Sombras fuertes
+* Animaciones exageradas
+* Elementos visuales recargados
+
+El resultado final debe sentirse como una invitación digital de boda de alta costura, digna de un evento exclusivo y memorable para Andrés y Ángela.

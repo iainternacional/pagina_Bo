@@ -40,21 +40,22 @@
 
     <!-- Pétalos animados -->
     <div class="petals" aria-hidden="true">
-      <span class="petal petal--1">&#10070;</span>
-      <span class="petal petal--2">&#10070;</span>
-      <span class="petal petal--3">&#10070;</span>
-      <span class="petal petal--4">&#10070;</span>
-      <span class="petal petal--5">&#10070;</span>
-      <span class="petal petal--6">&#10070;</span>
-      <span class="petal petal--7">&#10070;</span>
-      <span class="petal petal--8">&#10070;</span>
+      <span class="petal petal--1"></span>
+      <span class="petal petal--2"></span>
+      <span class="petal petal--3"></span>
+      <span class="petal petal--4"></span>
+      <span class="petal petal--5"></span>
+      <span class="petal petal--6"></span>
+      <span class="petal petal--7"></span>
+      <span class="petal petal--8"></span>
     </div>
 
     <div class="hero__content">
       <div class="hero__frame">
         <h1 class="hero__names">
-          <span>Andrés y</span>
-          <span>Ángela</span>
+          <span class="hero__name-line">Andrés</span>
+          <span class="hero__ampersand">&amp;</span>
+          <span class="hero__name-line">Ángela</span>
         </h1>
 
         <p class="hero__tagline">Nuestra Boda</p>
@@ -67,12 +68,24 @@
           <span class="cartouche__month">AGOSTO · 5:30 PM</span>
         </div>
 
-        <!-- Cuenta regresiva -->
-        <div class="countdown" id="countdown" aria-label="Cuenta regresiva">
-          <div class="countdown__item"><strong id="cd-days">--</strong><span>Días</span></div>
-          <div class="countdown__item"><strong id="cd-hours">--</strong><span>Horas</span></div>
-          <div class="countdown__item"><strong id="cd-mins">--</strong><span>Minutos</span></div>
-          <div class="countdown__item"><strong id="cd-secs">--</strong><span>Segundos</span></div>
+        <!-- Cuenta regresiva premium -->
+        <div class="countdown countdown--premium" id="countdown" aria-label="Cuenta regresiva">
+          <div class="countdown__item">
+            <strong class="countdown__num" id="cd-days" data-unit="days">--</strong>
+            <span class="countdown__label">Días</span>
+          </div>
+          <div class="countdown__item">
+            <strong class="countdown__num" id="cd-hours" data-unit="hours">--</strong>
+            <span class="countdown__label">Horas</span>
+          </div>
+          <div class="countdown__item">
+            <strong class="countdown__num" id="cd-mins" data-unit="mins">--</strong>
+            <span class="countdown__label">Minutos</span>
+          </div>
+          <div class="countdown__item">
+            <strong class="countdown__num" id="cd-secs" data-unit="secs">--</strong>
+            <span class="countdown__label">Segundos</span>
+          </div>
         </div>
       </div>
 
@@ -85,7 +98,17 @@
   <!-- ============= INFORMACIÓN PRINCIPAL ============= -->
   <section class="section section--intro" id="detalles">
     <div class="container">
-      <p class="ornament">&#10070;</p>
+      <div class="ornament" aria-hidden="true">
+        <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+          <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+          <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+          <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+          <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+          <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+          <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+        </svg>
+      </div>
       <h2 class="section__title">Detalles del evento</h2>
       <p class="section__subtitle script">El camino ha sido increíble, pero lo mejor está por comenzar.</p>
       <p class="section__lead">
@@ -94,49 +117,81 @@
         En este espacio encontrarás todo lo necesario para acompañarnos.
       </p>
 
-      <div class="info-grid">
+      <div class="info-grid" data-reveal>
         <div class="info-card">
-          <div class="info-card__icon" aria-hidden="true">&#128197;</div>
+          <div class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
           <h3>Fecha</h3>
           <p>Sábado<br/><strong>29 de agosto de 2026</strong></p>
         </div>
         <div class="info-card">
-          <div class="info-card__icon" aria-hidden="true">&#128344;</div>
+          <div class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          </div>
           <h3>Hora</h3>
           <p><strong>6:00 PM</strong><br/>Recibimiento desde las 5:30 PM</p>
         </div>
         <div class="info-card">
-          <div class="info-card__icon" aria-hidden="true">&#127968;</div>
+          <div class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1V10z"/></svg>
+          </div>
           <h3>Lugar</h3>
           <p><strong>Restaurante Tres Amores</strong><br/>Vía Tres Esquinas</p>
         </div>
         <div class="info-card">
-          <div class="info-card__icon" aria-hidden="true">&#128205;</div>
-          <h3>Ubicación</h3>
-          <p>
-            <a
-              href="https://www.google.com/maps/place/3+Corazones+Caf%C3%A9+-+Bar+%26+Restaurante/@4.1071002,-76.2162971,16z/data=!4m15!1m8!3m7!1s0x8e39c5c6c761990d:0x4b91b4e5ee425e42!2sTulu%C3%A1,+Valle+del+Cauca!3b1!8m2!3d4.089869!4d-76.1914991!16zL20vMDQ2aHBz!3m5!1s0x8e39c584dea20453:0xd4c2c3e0bc700ab4!8m2!3d4.1072623!4d-76.2160625!16s%2Fg%2F11k1nt_l01"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn--ghost"
-            >Ver en Google Maps</a>
-          </p>
+          <div class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-5.4-7-11a7 7 0 1114 0c0 5.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h3>Dirección</h3>
+          <p>Tuluá, Valle del Cauca<br/>Vía Tuluá – Tres Esquinas</p>
         </div>
       </div>
+
+      <!-- Tarjeta premium de ubicación -->
+      <article class="map-card" data-reveal>
+        <div class="map-card__thumb">
+          <img
+            src="assets/ceremonia.jpeg"
+            alt="Vista del Restaurante Tres Amores"
+            loading="lazy"
+          />
+        </div>
+        <div class="map-card__body">
+          <h3 class="map-card__title">Restaurante Tres Amores</h3>
+          <p class="map-card__address">Vía Tres Esquinas · Tuluá, Valle del Cauca</p>
+          <a
+            href="https://www.google.com/maps/place/3+Corazones+Caf%C3%A9+-+Bar+%26+Restaurante/@4.1071002,-76.2162971,16z/data=!4m15!1m8!3m7!1s0x8e39c5c6c761990d:0x4b91b4e5ee425e42!2sTulu%C3%A1,+Valle+del+Cauca!3b1!8m2!3d4.089869!4d-76.1914991!16zL20vMDQ2aHBz!3m5!1s0x8e39c584dea20453:0xd4c2c3e0bc700ab4!8m2!3d4.1072623!4d-76.2160625!16s%2Fg%2F11k1nt_l01"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--primary"
+          >Cómo llegar</a>
+        </div>
+      </article>
     </div>
   </section>
 
   <!-- ============= CEREMONIA ============= -->
   <section class="section section--alt" id="ceremonia">
     <div class="container two-col">
-      <div class="two-col__media">
+      <div class="two-col__media" data-reveal>
         <figure class="round-image">
           <img src="assets/ceremonia.jpeg" alt="Arco floral de ceremonia con hortensias azules y eucalipto" loading="lazy" />
           <figcaption class="round-image__badge"><span class="script">6:00 PM</span></figcaption>
         </figure>
       </div>
-      <div class="two-col__content">
-        <p class="ornament ornament--left">&#10070;</p>
+      <div class="two-col__content" data-reveal>
+        <div class="ornament ornament--left" aria-hidden="true">
+          <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+            <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+            <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+            <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+            <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+            <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+            <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+          </svg>
+        </div>
         <h2 class="section__title section__title--left">Ceremonia</h2>
         <p>
           La ceremonia dará inicio puntualmente a las <strong>6:00 PM</strong>
@@ -159,30 +214,38 @@
 
   <!-- ============= DRESS CODE / PALETA ============= -->
   <section class="section section--alt" id="dresscode">
-    <div class="container">
-      <p class="ornament">&#10070;</p>
+    <div class="container" data-reveal>
+      <div class="ornament" aria-hidden="true">
+        <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+          <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+          <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+          <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+          <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+          <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+          <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+        </svg>
+      </div>
       <h2 class="section__title">Código de vestimenta</h2>
       <p class="section__subtitle script">Nuestra paleta</p>
       <p class="section__lead">
-        Para que juntos logremos las postales más hermosas de este día, 
-        <strong>te compartimos nuestra paleta reservada.
-        </strong>. Estos tonos serán de uso exclusivo para el novio y su cortejo de honor.
-        <strong>no usar estos tonos</strong>
+        Para que juntos logremos las postales más hermosas de este día,
+        <strong>te compartimos nuestra paleta reservada</strong>.
+        Estos tonos serán de uso exclusivo para el novio y su cortejo de honor —
+        <strong>por favor, no uses estos tonos</strong>.
         ¡Gracias por respetarlo!
       </p>
 
-      <!-- Paleta destacada estilo tarjeta física -->
-      <div class="palette-cards">
-        <div class="palette-card palette-card--blue">
-          <span class="script">Dusty</span>
-          <span class="script">Blue</span>
+      <!-- Muestras de color (círculos) -->
+      <div class="color-swatches">
+        <div class="color-swatch color-swatch--blue" title="Dusty Blue">
+          <span class="color-swatch__label script">Dusty Blue</span>
         </div>
-        <div class="palette-card palette-card--sage">
-          <span class="script">Sage</span>
-          <span class="script">Green</span>
+        <div class="color-swatch color-swatch--sage" title="Sage Green">
+          <span class="color-swatch__label script">Sage Green</span>
         </div>
-        <div class="palette-card palette-card--gray">
-          <span class="script">Gray</span>
+        <div class="color-swatch color-swatch--gray" title="Warm Gray">
+          <span class="color-swatch__label script">Gray</span>
         </div>
       </div>
 
@@ -213,13 +276,23 @@
   <!-- ============= HOSPEDAJE Y TRANSPORTE ============= -->
   <section class="section" id="hospedaje">
     <div class="container two-col">
-      <div class="two-col__media">
+      <div class="two-col__media" data-reveal>
         <figure class="round-image">
           <img src="assets/hospedaje.jpeg" alt="Maleta vintage con flores azules y llave de hotel" loading="lazy" />
         </figure>
       </div>
-      <div class="two-col__content">
-        <p class="ornament ornament--left">&#10070;</p>
+      <div class="two-col__content" data-reveal>
+        <div class="ornament ornament--left" aria-hidden="true">
+          <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+            <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+            <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+            <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+            <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+            <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+            <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+          </svg>
+        </div>
         <h2 class="section__title section__title--left">Hospedaje y transporte</h2>
         <p>
           Si vienes desde fuera de Tuluá, indícanoslo en el formulario de confirmación
@@ -264,7 +337,17 @@
   <!-- ============= REGALOS / LLUVIA DE SOBRES ============= -->
   <section class="section" id="regalos">
     <div class="container narrow">
-      <p class="ornament">&#10070;</p>
+      <div class="ornament" aria-hidden="true">
+        <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+          <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+          <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+          <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+          <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+          <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+          <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+        </svg>
+      </div>
       <h2 class="section__title">Regalos</h2>
       <p class="section__subtitle script">Lluvia de Sobres</p>
       <p class="section__lead">
@@ -272,7 +355,7 @@
         hemos preparado una lluvia de sobres y un registro de regalos.
       </p>
 
-      <figure class="round-image round-image--small">
+      <figure class="round-image round-image--small" data-reveal>
         <img src="assets/regalos.jpeg" alt="Sobres elegantes atados con cinta dorada y flores" loading="lazy" />
       </figure>
 
@@ -293,8 +376,18 @@
 
   <!-- ============= RSVP ============= -->
   <section class="section section--rsvp" id="rsvp">
-    <div class="container narrow">
-      <p class="ornament">&#10070;</p>
+    <div class="container narrow" data-reveal>
+      <div class="ornament" aria-hidden="true">
+        <svg class="ornament__svg" viewBox="0 0 180 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="10" y1="14" x2="170" y2="14" stroke="currentColor" stroke-width="0.5" opacity="0.35"/>
+          <path d="M90 14 C86 8 80 6 75 9 C71 12 70 17 74 20 C78 23 85 21 88 17" stroke="currentColor" stroke-width="0.8" fill="none"/>
+          <ellipse cx="72" cy="10" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-25 72 10)"/>
+          <ellipse cx="82" cy="8" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(-8 82 8)"/>
+          <ellipse cx="92" cy="12" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(18 92 12)"/>
+          <ellipse cx="102" cy="9" rx="3.5" ry="6" fill="currentColor" opacity="0.22" transform="rotate(12 102 9)"/>
+          <ellipse cx="112" cy="15" rx="4" ry="7" fill="currentColor" opacity="0.18" transform="rotate(-12 112 15)"/>
+        </svg>
+      </div>
       <h2 class="section__title">Confirma tu asistencia</h2>
       <p class="section__subtitle script">Te esperamos</p>
       <p class="section__lead">
@@ -456,6 +549,15 @@
   </footer>
 
   <button id="adminBtn" class="admin-btn" hidden>Ver respuestas</button>
+
+  <!-- Reproductor de música flotante -->
+  <button class="music-player" id="musicPlayer" type="button" aria-label="Reproducir música de fondo" aria-pressed="false">
+    <span class="music-player__icon" aria-hidden="true">♫</span>
+    <span class="music-player__label">Escuchar música</span>
+  </button>
+  <audio id="bgMusic" loop preload="none">
+    <source src="assets/musica.mp3" type="audio/mpeg" />
+  </audio>
 
   <script src="script.js"></script>
 </body>
