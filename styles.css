@@ -1300,50 +1300,15 @@ a:hover { color: var(--champagne); }
 }
 
 /* ============== Regalos ============== */
-.gifts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-.gift-card {
-  background: var(--surface-solid);
-  padding: 2rem;
-  border-radius: var(--radius);
+.gifts__account {
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-subtle);
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition),
-    border-color var(--transition);
+  margin: 1.5rem auto 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
 }
-.gift-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(184, 145, 95, 0.4);
-}
-.gift-card__icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  background: rgba(184, 145, 95, 0.12);
-  transition: transform var(--transition), background var(--transition);
-}
-.gift-card:hover .gift-card__icon {
-  transform: scale(1.08);
-  background: rgba(184, 145, 95, 0.2);
-}
-.gift-card h3 {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 1.3rem;
-  margin: 0 0 1rem;
+.gifts__account strong {
   color: var(--dusty-blue-deep);
+  font-weight: 600;
 }
 
 /* ============== RSVP ============== */
@@ -1720,7 +1685,6 @@ a:hover { color: var(--champagne); }
     font-size: 1.4rem;
     padding: 0.65rem 1.1rem;
   }
-  .gifts { grid-template-columns: 1fr; }
   .section__title--left, .ornament--left { text-align: center; }
   .cartouche { gap: 1rem; padding: 0.8rem 1.6rem; }
   .palette-card { width: 110px; height: 90px; font-size: 1.4rem; }
