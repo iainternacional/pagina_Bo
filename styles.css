@@ -1,7 +1,7 @@
 /* ===========================================================
    Tarjeta de invitación v2 — Andrés y Ángela
    Inspirada en la tarjeta física · Tipografía Parisienne
-   Paleta: Dusty Blue · Sage Green · Gray · Cream · Champagne
+   Paleta: Azul Cielo · Sage Green · Gray · Cream · Champagne
    =========================================================== */
 
 /* ----- Tipografía local Parisienne ----- */
@@ -14,9 +14,9 @@
 }
 
 :root {
-  --dusty-blue: #8DA9C4;
-  --dusty-blue-dark: #6B8FAD;
-  --dusty-blue-deep: #4A6A85;
+  --dusty-blue: #87CEEB;
+  --dusty-blue-dark: #5CB3D9;
+  --dusty-blue-deep: #2E8BC0;
   --sage: #A8BBA3;
   --sage-green: #A8BBA3;
   --sage-dark: #8A9E86;
@@ -41,8 +41,8 @@
 
   --surface: rgba(255, 255, 255, 0.72);
   --surface-solid: #FFFFFF;
-  --border-subtle: rgba(141, 169, 196, 0.18);
-  --ring: 0 0 0 3px rgba(107, 143, 173, 0.22);
+  --border-subtle: rgba(135, 206, 235, 0.28);
+  --ring: 0 0 0 3px rgba(92, 179, 217, 0.28);
 
   --radius: 16px;
   --radius-lg: 24px;
@@ -180,22 +180,30 @@ a:hover { color: var(--champagne); }
 
 /* Texto intro con frases secuenciales */
 .intro-text {
-  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 640px;
   margin: 0 auto 2.5rem;
   text-align: center;
 }
 .intro-text__main {
+  width: 100%;
   margin: 0 0 0.85rem;
-  font-size: 1.05rem;
+  font-size: calc(1.05rem - 1pt);
   line-height: 1.65;
   color: var(--ink);
+  text-align: center;
 }
 .intro-text__phrase {
   display: block;
+  width: 100%;
   font-family: var(--font-sans);
   font-weight: 700;
   font-style: normal;
   color: var(--dusty-blue-deep);
+  text-align: center;
   opacity: 0;
   transform: translateY(14px);
 }
@@ -204,10 +212,15 @@ a:hover { color: var(--champagne); }
   font-weight: 700;
 }
 .intro-text__aside {
-  margin: 0.5rem 0 0;
+  display: block;
+  width: fit-content;
+  max-width: min(100%, 520px);
+  margin: 0.75rem auto 0;
+  padding: 0;
+  text-align: center;
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--ink-soft);
   opacity: 0;
   transform: translateY(10px);
@@ -216,7 +229,8 @@ a:hover { color: var(--champagne); }
   font-style: italic;
   font-weight: 400;
   font-family: inherit;
-  color: var(--ink-soft);
+  color: inherit;
+  text-align: center;
 }
 
 .intro-text.is-visible .intro-text__phrase,
@@ -226,8 +240,7 @@ a:hover { color: var(--champagne); }
 .intro-text.is-visible .intro-text__phrase:nth-child(1) { animation-delay: 0.15s; }
 .intro-text.is-visible .intro-text__phrase:nth-child(2) { animation-delay: 0.85s; }
 .intro-text.is-visible .intro-text__phrase:nth-child(3) { animation-delay: 1.55s; }
-.intro-text.is-visible .intro-text__phrase:nth-child(4) { animation-delay: 2.25s; }
-.intro-text.is-visible .intro-text__aside { animation-delay: 3.1s; }
+.intro-text.is-visible .intro-text__aside { animation-delay: 2.35s; }
 
 @keyframes phraseReveal {
   from { opacity: 0; transform: translateY(14px); }
