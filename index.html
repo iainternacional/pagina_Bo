@@ -335,16 +335,16 @@
 
         <!-- CAMPO 2: Email -->
         <div class="form-row">
-          <label for="email">Correo electrónico <span class="req">*</span></label>
-          <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" required autocomplete="email" />
+          <label for="email">Correo electrónico <span class="opt">(Opcional)</span></label>
+          <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" autocomplete="email" />
           <small class="help-msg">Usaremos esto para confirmación.</small>
           <small class="error-msg" data-for="email"></small>
         </div>
 
         <!-- CAMPO 3: Teléfono -->
         <div class="form-row">
-          <label for="phone">Número de teléfono <span class="opt">(Opcional)</span></label>
-          <input type="tel" id="phone" name="phone" placeholder="+57 (123) 456-7890" autocomplete="tel" />
+          <label for="phone">Número de teléfono <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+57 (123) 456-7890" required autocomplete="tel" />
           <small class="error-msg" data-for="phone"></small>
         </div>
 
@@ -395,27 +395,6 @@
             <small class="help-msg">Un nombre por línea.</small>
             <small class="error-msg" data-for="companionsNames"></small>
           </div>
-        </div>
-
-        <!-- CAMPO 7: Restricciones -->
-        <div class="form-row">
-          <label>Restricciones dietéticas <span class="opt">(Opcional)</span></label>
-          <div class="checkbox-grid">
-            <label class="check"><input type="checkbox" name="diet" value="vegetariano" /><span>Vegetariano</span></label>
-            <label class="check"><input type="checkbox" name="diet" value="vegano" /><span>Vegano</span></label>
-            <label class="check"><input type="checkbox" name="diet" value="sin_gluten" /><span>Sin gluten</span></label>
-            <label class="check"><input type="checkbox" name="diet" value="sin_mariscos" /><span>Sin mariscos</span></label>
-            <label class="check"><input type="checkbox" name="diet" value="sin_lacteos" /><span>Sin lácteos</span></label>
-            <label class="check"><input type="checkbox" name="diet" value="otro" id="dietOther" /><span>Otro</span></label>
-          </div>
-          <small class="help-msg">Ayúdanos a preparar el menú perfecto.</small>
-        </div>
-
-        <!-- CAMPO 8: Otra restricción -->
-        <div class="form-row conditional" id="dietOtherRow" hidden>
-          <label for="dietOtherText">Especifica tu restricción</label>
-          <textarea id="dietOtherText" name="dietOtherText" rows="2" maxlength="200" placeholder="Cuéntanos sobre tu restricción"></textarea>
-          <small class="help-msg"><span id="dietOtherCount">0</span> / 200</small>
         </div>
 
         <!-- CAMPO 9: Cómo nos conocemos -->

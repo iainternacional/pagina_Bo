@@ -123,10 +123,6 @@
   const msgCountEl  = $('#msgCount');
   messageEl?.addEventListener('input', () => { msgCountEl.textContent = messageEl.value.length; });
 
-  const dietOtherText  = $('#dietOtherText');
-  const dietOtherCount = $('#dietOtherCount');
-  dietOtherText?.addEventListener('input', () => { dietOtherCount.textContent = dietOtherText.value.length; });
-
   // ============== Campos condicionales ==============
   const attendingFields    = $('#attendingFields');
   const companionsSelect   = $('#companions');
@@ -154,13 +150,6 @@
       companionsNamesRow.hidden = true;
       companionsNames.value = '';
     }
-  });
-
-  const dietOtherCheckbox = $('#dietOther');
-  const dietOtherRow      = $('#dietOtherRow');
-  dietOtherCheckbox?.addEventListener('change', () => {
-    dietOtherRow.hidden = !dietOtherCheckbox.checked;
-    if (!dietOtherCheckbox.checked) dietOtherText.value = '';
   });
 
   // ============== Validaciones ==============
@@ -213,11 +202,11 @@
     if (fullName.length < 3) { setError('fullName', fullName ? ERR.MIN_NAME : ERR.REQUIRED); ok = false; }
 
     const email = $('#email').value.trim();
-    if (!email) { setError('email', ERR.REQUIRED); ok = false; }
-    else if (!emailRegex.test(email)) { setError('email', ERR.EMAIL); ok = false; }
+    if (email && !emailRegex.test(email)) { setError('email', ERR.EMAIL); ok = false; }
 
     const phone = $('#phone').value.trim();
-    if (phone && !phoneRegex.test(phone)) { setError('phone', ERR.PHONE); ok = false; }
+    if (!phone) { setError('phone', ERR.REQUIRED); ok = false; }
+    else if (!phoneRegex.test(phone)) { setError('phone', ERR.PHONE); ok = false; }
 
     const attendance = $$('input[name="attendance"]').find(r => r.checked)?.value;
     if (!attendance) { setError('attendance', ERR.ATTEND); ok = false; }
@@ -247,7 +236,6 @@
       return;
     }
 
-    const diet = $$('input[name="diet"]:checked').map(c => c.value);
     const attendance = $$('input[name="attendance"]').find(r => r.checked).value;
     const confirmation = $$('input[name="confirmation"]').find(r => r.checked).value;
 
@@ -259,8 +247,6 @@
       attendance,
       companions:       attendance === 'yes' ? $('#companions').value : '',
       companionsNames:  attendance === 'yes' ? $('#companionsNames').value.trim() : '',
-      diet,
-      dietOtherText:    diet.includes('otro') ? $('#dietOtherText').value.trim() : '',
       relation:         $('#relation').value,
       message:          $('#message').value.trim(),
       confirmation,
@@ -280,9 +266,7 @@
       form.reset();
       attendingFields.hidden = true;
       companionsNamesRow.hidden = true;
-      dietOtherRow.hidden = true;
       msgCountEl.textContent = '0';
-      dietOtherCount.textContent = '0';
     } catch (err) {
       console.error(err);
       alert('Hubo un problema al enviar. Tus datos se guardaron localmente, te contactaremos si es necesario.');
@@ -343,7 +327,7 @@
   function downloadCSV(rows) {
     const headers = [
       'timestamp','fullName','email','phone','attendance','companions',
-      'companionsNames','diet','dietOtherText','relation','message','confirmation'
+      'companionsNames','relation','message','confirmation'
     ];
     const escape = (v) => {
       const s = (v ?? '').toString().replace(/"/g, '""');
