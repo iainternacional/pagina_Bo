@@ -44,22 +44,43 @@
     navToggle?.setAttribute('aria-expanded', 'false');
   }));
 
-  // ============== Parallax sutil en el hero (sin interferir con Ken Burns) ==============
-  const heroBg = $('.hero__bg');
-  let ticking = false;
-  function onParallax() {
-    if (!heroBg) return;
-    const y = window.scrollY;
-    if (y > window.innerHeight) return;
-    const offset = y * 0.12;
-    heroBg.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+  // ============== Scroll spy (navbar activa) ==============
+  const navLinks = $$('.navbar__menu a[href^="#"]');
+  const sections = navLinks
+    .map((link) => {
+      const id = link.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      return el ? { id, el, link } : null;
+    })
+    .filter(Boolean);
+
+  function setActiveNav(id) {
+    navLinks.forEach((link) => {
+      const match = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('is-active', match);
+    });
   }
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => { onParallax(); ticking = false; });
-      ticking = true;
-    }
-  }, { passive: true });
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) setActiveNav(entry.target.id);
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(({ el }) => spyObserver.observe(el));
+  if (sections.length) setActiveNav(sections[0].id);
+
+  // ============== Pausar pétalos fuera de vista ==============
+  const petalsEl = $('.petals');
+  if (petalsEl) {
+    const petalsObserver = new IntersectionObserver(([entry]) => {
+      petalsEl.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      petalsEl.querySelectorAll('.petal').forEach((p) => {
+        p.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    }, { threshold: 0.05 });
+    petalsObserver.observe($('.hero'));
+  }
 
   // ============== Cuenta regresiva premium ==============
   const cd = {
@@ -248,6 +269,7 @@
     const submitBtn = $('#submitBtn');
     const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
+    submitBtn.classList.add('is-loading');
     submitBtn.textContent = 'Enviando...';
 
     try {
@@ -266,6 +288,7 @@
       alert('Hubo un problema al enviar. Tus datos se guardaron localmente, te contactaremos si es necesario.');
     } finally {
       submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
       submitBtn.textContent = originalText;
     }
   });
