@@ -112,57 +112,44 @@ del invitado (para no requerir backend).
 
 ---
 
-### Opción B — Google Sheets + Apps Script (recomendado)
+### Opción B — Google Sheets + Apps Script (recomendado) ✅
 
 Mantiene el **diseño y validaciones personalizadas**, y envía cada respuesta
-a una hoja de cálculo.
+a una hoja de cálculo. El código listo está en `google-apps-script/Code.gs`.
 
-**1. Crear el script (en Google Drive):**
+**1. Crear la hoja y el script:**
 
-   - Crea una nueva hoja de cálculo de Google Sheets.
-   - Menú **Extensiones → Apps Script**.
-   - Pega el siguiente código:
-
-   ```javascript
-   function doPost(e) {
-     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-     const data  = JSON.parse(e.postData.contents);
-     if (sheet.getLastRow() === 0) {
-       sheet.appendRow(Object.keys(data));
-     }
-     sheet.appendRow(Object.values(data).map(v =>
-       Array.isArray(v) ? v.join(', ') : v
-     ));
-     return ContentService.createTextOutput(JSON.stringify({ok: true}))
-       .setMimeType(ContentService.MimeType.JSON);
-   }
-   ```
+1. Abre [Google Sheets](https://sheets.google.com) → **Hoja de cálculo en blanco**.
+2. Ponle un nombre, ej. `RSVP Boda Andrés y Ángela`.
+3. Menú **Extensiones → Apps Script**.
+4. Borra el código por defecto y pega todo el contenido de `google-apps-script/Code.gs`.
+5. Guarda el proyecto (Ctrl+S) y ponle un nombre al script.
 
 **2. Publicar como aplicación web:**
 
-   - Apps Script → **Implementar → Nueva implementación**.
-   - Tipo: **Aplicación web**.
-   - Ejecutar como: **Yo (tu cuenta)**.
-   - Acceso: **Cualquier persona**.
-   - Copia la **URL del web app** generada.
+1. En Apps Script: **Implementar → Nueva implementación**.
+2. Tipo: **Aplicación web**.
+3. Descripción: `RSVP v1` (opcional).
+4. Ejecutar como: **Yo**.
+5. Quién tiene acceso: **Cualquier persona**.
+6. **Implementar** → autoriza con tu cuenta de Google (acepta los permisos).
+7. Copia la **URL de la aplicación web** (termina en `/exec`).
 
-**3. Conectarla con la invitación:**
+**3. Conectar con la invitación:**
 
-   Abre `script.js` y reemplaza:
+Abre `script.js` y pega la URL:
 
-   ```javascript
-   const SHEETS_ENDPOINT = "";
-   ```
+```javascript
+const SHEETS_ENDPOINT = "https://script.google.com/macros/s/TU_ID_AQUI/exec";
+```
 
-   Por:
+**4. Probar:**
 
-   ```javascript
-   const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycb.../exec";
-   ```
+1. Abre la invitación y envía una confirmación de prueba.
+2. En la Google Sheet debe aparecer la pestaña **Respuestas** con una fila nueva.
+3. Si cambias el Apps Script después, crea una **Nueva implementación** (o nueva versión) y actualiza la URL si cambia.
 
-   Listo. Cada vez que un invitado confirme, la respuesta se añade a tu Google Sheet
-   y también se guarda como backup local.
-
+Cada confirmación se guarda en Google Sheets **y** como respaldo en `localStorage`.
 ---
 
 ### Opción C — Backend personalizado (Firebase / Node.js)

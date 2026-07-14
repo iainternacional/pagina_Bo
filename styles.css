@@ -14,7 +14,7 @@
 }
 
 :root {
-  --dusty-blue: #87CEEB;
+  --dusty-blue: #94DBF1;
   --dusty-blue-dark: #5CB3D9;
   --dusty-blue-deep: #2E8BC0;
   --sage: #A8BBA3;
@@ -41,7 +41,7 @@
 
   --surface: rgba(255, 255, 255, 0.72);
   --surface-solid: #FFFFFF;
-  --border-subtle: rgba(135, 206, 235, 0.28);
+  --border-subtle: rgba(148, 219, 241, 0.28);
   --ring: 0 0 0 3px rgba(92, 179, 217, 0.28);
 
   --radius: 16px;

@@ -13,8 +13,11 @@
 (() => {
   'use strict';
 
-  // ===== Configuración opcional: enviar a Google Sheets vía Apps Script =====
-  const SHEETS_ENDPOINT = "";
+  // ===== Google Sheets (Apps Script) =====
+  // 1. Sigue los pasos en google-apps-script/Code.gs
+  // 2. Pega aquí la URL de la implementación (.../exec)
+  // Ejemplo: "https://script.google.com/macros/s/AKfycb.../exec"
+  const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwgYyYwmO5sfQ5OVXPJhjB-yIFPeEaNkUFCV3Tcitd2isvXjxGCl5uewFxYRNe5smDEPQ/exec";
 
   // Fecha de la boda
   const WEDDING_DATE = new Date('2026-08-29T17:30:00-05:00');
