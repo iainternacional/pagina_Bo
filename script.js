@@ -376,7 +376,7 @@
         updateMusicUI(false);
       }
     } catch {
-      musicPlayer.setAttribute('title', 'Agrega assets/musica.mp3 para habilitar la música');
+      musicPlayer.setAttribute('title', 'No se pudo reproducir la música de fondo');
     }
   });
 
