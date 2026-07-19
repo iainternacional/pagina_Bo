@@ -336,29 +336,12 @@
       </p>
 
       <form id="rsvpForm" class="rsvp-form" novalidate>
-        <!-- CAMPO 1: Nombre -->
         <div class="form-row">
           <label for="fullName">Nombre completo <span class="req">*</span></label>
           <input type="text" id="fullName" name="fullName" placeholder="Escribe tu nombre completo" minlength="3" required autocomplete="name" />
           <small class="error-msg" data-for="fullName"></small>
         </div>
 
-        <!-- CAMPO 2: Email -->
-        <div class="form-row">
-          <label for="email">Correo electrónico <span class="opt">(Opcional)</span></label>
-          <input type="email" id="email" name="email" placeholder="tu.email@ejemplo.com" autocomplete="email" />
-          <small class="help-msg">Usaremos esto para confirmación.</small>
-          <small class="error-msg" data-for="email"></small>
-        </div>
-
-        <!-- CAMPO 3: Teléfono -->
-        <div class="form-row">
-          <label for="phone">Número de teléfono <span class="req">*</span></label>
-          <input type="tel" id="phone" name="phone" placeholder="+57 (123) 456-7890" required autocomplete="tel" />
-          <small class="error-msg" data-for="phone"></small>
-        </div>
-
-        <!-- CAMPO 4: Confirmación -->
         <div class="form-row">
           <label>¿Confirmas tu asistencia? <span class="req">*</span></label>
           <div class="choice-grid" role="radiogroup" aria-label="Asistencia">
@@ -381,63 +364,15 @@
           <small class="error-msg" data-for="attendance"></small>
         </div>
 
-        <!-- Condicionales si asiste -->
         <div id="attendingFields" class="conditional" hidden>
-          <!-- CAMPO 5: Acompañantes -->
           <div class="form-row">
-            <label for="companions">Número de acompañantes <span class="req">*</span></label>
-            <select id="companions" name="companions">
-              <option value="">Selecciona cantidad</option>
-              <option value="0">0 (solo yo)</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <small class="help-msg">No te incluyas en el conteo; solo cuenta a tus acompañantes.</small>
-            <small class="error-msg" data-for="companions"></small>
+            <label for="guests">Cantidad de personas <span class="req">*</span></label>
+            <input type="number" id="guests" name="guests" min="1" max="20" step="1" placeholder="Ej. 2" inputmode="numeric" />
+            <small class="help-msg">
+              Recuerda que el número que ingreses debe ser el mismo que te enviamos en tu tarjeta de invitación (virtual o física).
+            </small>
+            <small class="error-msg" data-for="guests"></small>
           </div>
-
-          <!-- CAMPO 6: Nombres acompañantes -->
-          <div class="form-row conditional" id="companionsNamesRow" hidden>
-            <label for="companionsNames">Nombre(s) de acompañante(s) <span class="req">*</span></label>
-            <textarea id="companionsNames" name="companionsNames" rows="3" placeholder="Nombre completo del acompañante (uno por línea)"></textarea>
-            <small class="help-msg">Un nombre por línea.</small>
-            <small class="error-msg" data-for="companionsNames"></small>
-          </div>
-        </div>
-
-        <!-- CAMPO 9: Cómo nos conocemos -->
-        <div class="form-row">
-          <label for="relation">¿Cómo nos conocemos? <span class="opt">(Opcional)</span></label>
-          <select id="relation" name="relation">
-            <option value="">Selecciona una opción</option>
-            <option value="familia_novio">Familia de Andrés</option>
-            <option value="familia_novia">Familia de Ángela</option>
-            <option value="amigo_novio">Amigo/a de Andrés</option>
-            <option value="amiga_novia">Amigo/a de Ángela</option>
-            <option value="trabajo">Trabajo</option>
-            <option value="otro">Otro</option>
-          </select>
-        </div>
-
-        <!-- CAMPO 10: Mensaje -->
-        <div class="form-row">
-          <label for="message">Mensaje especial <span class="opt">(Opcional)</span></label>
-          <textarea id="message" name="message" rows="4" maxlength="500" placeholder="¿Un mensaje, recomendación o deseo para los novios?"></textarea>
-          <small class="help-msg"><span id="msgCount">0</span> / 500</small>
-        </div>
-
-        <!-- CAMPO 11: Nivel de confirmación -->
-        <div class="form-row">
-          <label>Nivel de confirmación <span class="req">*</span></label>
-          <div class="radio-list" role="radiogroup">
-            <label class="check"><input type="radio" name="confirmation" value="confirmado" required /><span>Confirmado (100% iré)</span></label>
-            <label class="check"><input type="radio" name="confirmation" value="probable" /><span>Probable (muy probablemente iré)</span></label>
-            <label class="check"><input type="radio" name="confirmation" value="pendiente" /><span>Pendiente (confirmaré después)</span></label>
-          </div>
-          <small class="help-msg">Esto nos ayuda con la planificación.</small>
-          <small class="error-msg" data-for="confirmation"></small>
         </div>
 
         <button type="submit" class="btn btn--primary btn--block" id="submitBtn">Enviar confirmación</button>

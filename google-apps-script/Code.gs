@@ -10,7 +10,11 @@
  *    - Quién tiene acceso: Cualquier persona
  * 5. Copia la URL (.../exec) y pégala en script.js → SHEETS_ENDPOINT
  *
- * Columnas que se crean automáticamente en la hoja "Respuestas".
+ * IMPORTANTE: cada vez que cambies este código debes crear una
+ * "Nueva versión" en Implementar → Administrar implementaciones.
+ * Guardar solo no actualiza la URL /exec que usa la invitación.
+ *
+ * Columnas: Fecha | Nombre | Asistencia | Cantidad
  */
 
 var SHEET_NAME = 'Respuestas';
@@ -18,31 +22,19 @@ var SHEET_NAME = 'Respuestas';
 var HEADERS = [
   'timestamp',
   'fullName',
-  'email',
-  'phone',
   'attendance',
-  'companions',
-  'companionsNames',
-  'relation',
-  'message',
-  'confirmation'
+  'guests'
 ];
 
 var HEADER_LABELS = [
   'Fecha',
   'Nombre',
-  'Email',
-  'Teléfono',
   'Asistencia',
-  'Acompañantes',
-  'Nombres acompañantes',
-  'Relación',
-  'Mensaje',
-  'Confirmación'
+  'Cantidad'
 ];
 
 function doGet() {
-  return json_({ ok: true, service: 'rsvp-andres-angela' });
+  return json_({ ok: true, service: 'rsvp-andres-angela', columns: HEADER_LABELS });
 }
 
 function doPost(e) {
@@ -80,10 +72,15 @@ function getOrCreateSheet_() {
 }
 
 function ensureHeaders_(sheet) {
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(HEADER_LABELS);
-    sheet.getRange(1, 1, 1, HEADER_LABELS.length).setFontWeight('bold');
-    sheet.setFrozenRows(1);
+  var lastCol = Math.max(sheet.getLastColumn(), HEADER_LABELS.length);
+  // Siempre sincroniza la fila 1 con las columnas actuales
+  sheet.getRange(1, 1, 1, HEADER_LABELS.length).setValues([HEADER_LABELS]);
+  sheet.getRange(1, 1, 1, HEADER_LABELS.length).setFontWeight('bold');
+  sheet.setFrozenRows(1);
+
+  // Limpia encabezados viejos a la derecha (Email, Teléfono, etc.)
+  if (lastCol > HEADER_LABELS.length) {
+    sheet.getRange(1, HEADER_LABELS.length + 1, 1, lastCol).clearContent();
   }
 }
 

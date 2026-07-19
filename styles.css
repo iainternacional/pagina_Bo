@@ -1393,6 +1393,7 @@ a:hover { color: var(--champagne); }
 .rsvp-form input[type="text"],
 .rsvp-form input[type="email"],
 .rsvp-form input[type="tel"],
+.rsvp-form input[type="number"],
 .rsvp-form select,
 .rsvp-form textarea {
   width: 100%;

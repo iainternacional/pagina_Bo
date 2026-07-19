@@ -4,7 +4,6 @@
    - Parallax sutil en el fondo del hero
    - Pétalos animados (controlados por CSS)
    - Cuenta regresiva
-   - Campos condicionales
    - Validaciones del formulario RSVP
    - Guardado local + opcional Google Sheets endpoint
    - Panel admin oculto (Ctrl+Shift+R) para exportar CSV
@@ -121,56 +120,30 @@
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
-  // ============== Contadores de caracteres ==============
-  const messageEl   = $('#message');
-  const msgCountEl  = $('#msgCount');
-  messageEl?.addEventListener('input', () => { msgCountEl.textContent = messageEl.value.length; });
-
   // ============== Campos condicionales ==============
-  const attendingFields    = $('#attendingFields');
-  const companionsSelect   = $('#companions');
-  const companionsNamesRow = $('#companionsNamesRow');
-  const companionsNames    = $('#companionsNames');
-  const attendanceRadios   = $$('input[name="attendance"]');
+  const form = $('#rsvpForm');
+  const attendingFields = $('#attendingFields');
+  const guestsInput = $('#guests');
+  const attendanceRadios = $$('input[name="attendance"]');
 
   function updateAttendanceUI() {
-    const selected = $$('input[name="attendance"]').find(r => r.checked)?.value;
+    const selected = attendanceRadios.find(r => r.checked)?.value;
     const attending = selected === 'yes';
-    attendingFields.hidden = !attending;
-    if (!attending) {
-      companionsSelect.value = '';
-      companionsNames.value = '';
-      companionsNamesRow.hidden = true;
+    if (attendingFields) attendingFields.hidden = !attending;
+    if (!attending && guestsInput) {
+      guestsInput.value = '';
+      clearError('guests');
     }
   }
   attendanceRadios.forEach(r => r.addEventListener('change', updateAttendanceUI));
 
-  companionsSelect?.addEventListener('change', () => {
-    const n = parseInt(companionsSelect.value, 10);
-    if (!isNaN(n) && n > 0) {
-      companionsNamesRow.hidden = false;
-    } else {
-      companionsNamesRow.hidden = true;
-      companionsNames.value = '';
-    }
-  });
-
   // ============== Validaciones ==============
-  const form = $('#rsvpForm');
-
   const ERR = {
-    REQUIRED:  'Este campo es obligatorio.',
-    EMAIL:     'Por favor, ingresa un email válido.',
-    MIN_NAME:  'Ingresa al menos 3 caracteres.',
-    PHONE:     'Ingresa un número de teléfono válido.',
-    ATTEND:    'Indica si puedes asistir.',
-    CONF:      'Selecciona tu nivel de confirmación.',
-    COMPAN:    'Selecciona la cantidad de acompañantes.',
-    COMPNAMES: 'Debes especificar los nombres de tus acompañantes.',
+    REQUIRED: 'Este campo es obligatorio.',
+    MIN_NAME: 'Ingresa al menos 3 caracteres.',
+    ATTEND:   'Indica si puedes asistir.',
+    GUESTS:   'Ingresa la cantidad de personas de tu invitación.',
   };
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[+]?[\d\s\-()]{7,20}$/;
 
   function setError(field, message) {
     const input = typeof field === 'string' ? document.getElementById(field) : field;
@@ -190,12 +163,8 @@
   }
 
   $('#fullName')?.addEventListener('input', () => clearError('fullName'));
-  $('#email')?.addEventListener('input', () => clearError('email'));
-  $('#phone')?.addEventListener('input', () => clearError('phone'));
-  $('#companions')?.addEventListener('change', () => clearError('companions'));
-  $('#companionsNames')?.addEventListener('input', () => clearError('companionsNames'));
+  guestsInput?.addEventListener('input', () => clearError('guests'));
   attendanceRadios.forEach(r => r.addEventListener('change', () => clearError('attendance')));
-  $$('input[name="confirmation"]').forEach(r => r.addEventListener('change', () => clearError('confirmation')));
 
   function validate() {
     clearAllErrors();
@@ -204,27 +173,16 @@
     const fullName = $('#fullName').value.trim();
     if (fullName.length < 3) { setError('fullName', fullName ? ERR.MIN_NAME : ERR.REQUIRED); ok = false; }
 
-    const email = $('#email').value.trim();
-    if (email && !emailRegex.test(email)) { setError('email', ERR.EMAIL); ok = false; }
-
-    const phone = $('#phone').value.trim();
-    if (!phone) { setError('phone', ERR.REQUIRED); ok = false; }
-    else if (!phoneRegex.test(phone)) { setError('phone', ERR.PHONE); ok = false; }
-
-    const attendance = $$('input[name="attendance"]').find(r => r.checked)?.value;
+    const attendance = attendanceRadios.find(r => r.checked)?.value;
     if (!attendance) { setError('attendance', ERR.ATTEND); ok = false; }
 
     if (attendance === 'yes') {
-      const companions = $('#companions').value;
-      if (companions === '') { setError('companions', ERR.COMPAN); ok = false; }
-      else if (parseInt(companions, 10) > 0) {
-        const names = $('#companionsNames').value.trim();
-        if (!names) { setError('companionsNames', ERR.COMPNAMES); ok = false; }
+      const guests = parseInt(guestsInput?.value, 10);
+      if (!guestsInput?.value || isNaN(guests) || guests < 1) {
+        setError('guests', ERR.GUESTS);
+        ok = false;
       }
     }
-
-    const confirmation = $$('input[name="confirmation"]').find(r => r.checked)?.value;
-    if (!confirmation) { setError('confirmation', ERR.CONF); ok = false; }
 
     return ok;
   }
@@ -239,20 +197,13 @@
       return;
     }
 
-    const attendance = $$('input[name="attendance"]').find(r => r.checked).value;
-    const confirmation = $$('input[name="confirmation"]').find(r => r.checked).value;
+    const attendance = attendanceRadios.find(r => r.checked).value;
 
     const data = {
-      timestamp:        new Date().toISOString(),
-      fullName:         $('#fullName').value.trim(),
-      email:            $('#email').value.trim(),
-      phone:            $('#phone').value.trim(),
+      timestamp:  new Date().toISOString(),
+      fullName:   $('#fullName').value.trim(),
       attendance,
-      companions:       attendance === 'yes' ? $('#companions').value : '',
-      companionsNames:  attendance === 'yes' ? $('#companionsNames').value.trim() : '',
-      relation:         $('#relation').value,
-      message:          $('#message').value.trim(),
-      confirmation,
+      guests:     attendance === 'yes' ? guestsInput.value : '',
     };
 
     const submitBtn = $('#submitBtn');
@@ -267,9 +218,7 @@
 
       showSuccess(data);
       form.reset();
-      attendingFields.hidden = true;
-      companionsNamesRow.hidden = true;
-      msgCountEl.textContent = '0';
+      if (attendingFields) attendingFields.hidden = true;
     } catch (err) {
       console.error(err);
       alert('Hubo un problema al enviar. Tus datos se guardaron localmente, te contactaremos si es necesario.');
@@ -328,10 +277,7 @@
   });
 
   function downloadCSV(rows) {
-    const headers = [
-      'timestamp','fullName','email','phone','attendance','companions',
-      'companionsNames','relation','message','confirmation'
-    ];
+    const headers = ['timestamp', 'fullName', 'attendance', 'guests'];
     const escape = (v) => {
       const s = (v ?? '').toString().replace(/"/g, '""');
       return /[",\n;]/.test(s) ? `"${s}"` : s;
